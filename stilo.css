@@ -1,0 +1,1587 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #111b2d;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#pantallaInicio {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 99999;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: opacity 0.8s ease,
+                visibility 0.8s ease;
+}
+
+
+/* Imagen de fondo */
+
+.fondoInicio {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* Imagen de la carta */
+
+.cartaInicio {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(80vw, 500px);
+
+    max-height: 80vh;
+
+    object-fit: contain;
+
+    /* Sombra opcional */
+    filter: drop-shadow(
+        0 15px 20px rgba(0,0,0,0.25)
+    );
+}
+
+
+/* Cuando se hace click */
+
+#pantallaInicio.ocultar {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.Historia img {
+  display: block;
+    width: 100%;
+    max-width: 900px;
+    max-height: 70vh;
+    height: auto;
+
+    margin: 30px auto;
+    padding: 0;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    image-rendering: auto;
+
+    box-sizing: border-box;
+}
+
+
+.Protocolo {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    min-height: 650px;
+    margin: 80px auto;
+    font-family: "Georgia", serif;
+}
+/* ========================================
+   SECCIÓN CONFIRMAR ASISTENCIA
+   ======================================== */
+
+/* =========================
+   CONFIRMAR ASISTENCIA
+   ========================= */
+
+.ConfirmarAsistencia {
+    position: relative;
+
+    width: min(90%, 600px);
+    min-height: 400px;
+
+    margin: 80px auto;
+    padding: 55px 45px;
+
+    box-sizing: border-box;
+
+    background: #f8f5ee;
+    color: #272333;
+
+    text-align: center;
+
+    border: 1px solid #c9c0b4;
+    border-radius: 2px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    z-index: 2;
+}
+
+
+/* Título */
+
+.ConfirmarAsistencia h2 {
+    margin: 10px 0 30px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    font-style: italic;
+
+    color: #292638;
+}
+
+
+/* Texto */
+
+.ConfirmarAsistencia p {
+    max-width: 450px;
+
+    margin: 0 auto 25px;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: #302d35;
+}
+
+
+/* Decoración */
+
+.ConfirmarAsistencia::before,
+.ConfirmarAsistencia::after {
+    content: "✧";
+
+    position: absolute;
+
+    top: 10px;
+
+    font-size: 25px;
+    color: #8d2730;
+}
+
+.ConfirmarAsistencia::before {
+    left: 12px;
+}
+
+.ConfirmarAsistencia::after {
+    right: 12px;
+}
+
+
+/* =========================
+   MÓVIL
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .ConfirmarAsistencia {
+        width: 92%;
+        min-height: auto;
+
+        margin: 50px auto;
+        padding: 45px 25px;
+    }
+
+    .ConfirmarAsistencia h2 {
+        font-size: 28px;
+    }
+
+    .ConfirmarAsistencia p {
+        font-size: 15px;
+    }
+}
+
+.textoConfirmacion {
+    max-width: 600px;
+
+    margin: auto;
+}
+
+.textoConfirmacion h2 {
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+    font-style: italic;
+    font-weight: normal;
+
+    color: #292638;
+}
+
+.textoConfirmacion p {
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: #302d35;
+}
+
+
+/* ========================================
+   BOTÓN CONFIRMAR
+   ======================================== */
+
+#abrirEncuesta {
+    margin-top: 25px;
+
+    padding: 12px 35px;
+
+    background: #292638;
+    color: white;
+
+    border: none;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#abrirEncuesta:hover {
+    background: #8d2730;
+
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   MODAL
+   ======================================== */
+
+#modalEncuesta {
+    display: none;
+
+    position: fixed;
+
+    z-index: 1000;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(20, 19, 30, 0.70);
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Cuando se abre */
+
+#modalEncuesta.mostrar {
+    display: flex;
+}
+
+
+/* ========================================
+   TARJETA
+   ======================================== */
+
+.formulario {
+    position: relative;
+
+    width: 90%;
+    max-width: 500px;
+
+    padding: 50px;
+
+    box-sizing: border-box;
+
+    background: #f8f5ee;
+
+    border: 1px solid #c9c0b4;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+    animation: aparecer 0.3s ease;
+}
+
+
+/* ========================================
+   TÍTULO
+   ======================================== */
+
+.formulario h2 {
+    margin-top: 0;
+    margin-bottom: 35px;
+
+    text-align: center;
+
+    font-family: Georgia, serif;
+
+    font-size: 30px;
+    font-style: italic;
+    font-weight: normal;
+
+    color: #292638;
+}
+
+
+/* ========================================
+   ETIQUETAS
+   ======================================== */
+
+.formulario label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    color: #302d35;
+}
+
+
+/* ========================================
+   INPUT DEL NOMBRE
+   ======================================== */
+
+#nombre {
+    width: 100%;
+
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    margin-bottom: 25px;
+
+    background: transparent;
+
+    border: none;
+
+    border-bottom: 1px solid #9c948b;
+
+    outline: none;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    color: #292638;
+}
+
+
+/* Cuando escribes */
+
+#nombre:focus {
+    border-bottom: 1px solid #8d2730;
+}
+
+
+/* Placeholder */
+
+#nombre::placeholder {
+    color: #aaa39b;
+
+    font-style: italic;
+}
+
+
+/* ========================================
+   "ASISTIRÁS A"
+   ======================================== */
+
+.tituloOpciones {
+    margin-bottom: 15px;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    color: #302d35;
+}
+
+
+/* ========================================
+   OPCIONES
+   ======================================== */
+
+.opcionesAsistencia {
+    margin-bottom: 30px;
+}
+
+
+/* Cada opción */
+
+.opcionesAsistencia label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+    cursor: pointer;
+}
+
+
+/* Checkbox */
+
+.opcionesAsistencia input[type="checkbox"] {
+    appearance: none;
+
+    width: 20px;
+    height: 20px;
+
+    border: 1px solid #8d2730;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+
+/* Checkbox seleccionado */
+
+.opcionesAsistencia input[type="checkbox"]:checked {
+    background: #292638;
+}
+
+
+/* ✓ */
+
+.opcionesAsistencia input[type="checkbox"]:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: white;
+
+    font-size: 14px;
+}
+
+
+/* Texto de la opción */
+
+.opcionesAsistencia span {
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    color: #302d35;
+}
+
+
+/* ========================================
+   BOTÓN ENVIAR
+   ======================================== */
+
+.botonEnviar {
+    display: block;
+
+    margin: 10px auto 0;
+
+    padding: 12px 25px;
+
+    background: #292638;
+
+    color: white;
+
+    border: none;
+
+    font-family: Georgia, serif;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.botonEnviar:hover {
+    background: #8d2730;
+}
+
+
+/* ========================================
+   BOTÓN CERRAR
+   ======================================== */
+
+#cerrarEncuesta {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    background: none;
+
+    border: none;
+
+    font-size: 30px;
+
+    color: #292638;
+
+    cursor: pointer;
+}
+
+#cerrarEncuesta:hover {
+    color: #8d2730;
+}
+
+
+/* ========================================
+   ANIMACIÓN
+   ======================================== */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+}
+
+/* =========================
+   CÓDIGO DE VESTIMENTA
+   ========================= */
+
+.CodigoDeVestimenta {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 55%;
+    min-height: 450px;
+
+    padding: 55px 50px;
+    box-sizing: border-box;
+
+    background: #25263b;
+    color: #fff;
+
+    text-align: center;
+
+    border: 1px solid #b9b0a4;
+
+    border-radius: 2px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+
+    z-index: 1;
+}
+
+.CodigoDeVestimenta img {
+    display: block;
+
+    width: 80px;
+    height: 60px;
+
+    object-fit: contain;
+
+    margin: 0 auto 20px;
+}
+
+.CodigoDeVestimenta h2 {
+    margin: 10px 0 30px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    font-style: italic;
+
+    color: #fff;
+}
+
+.CodigoDeVestimenta p {
+    margin: 12px auto;
+
+    max-width: 400px;
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    color: #f3f0ed;
+}
+
+/* =========================
+   SUGERENCIA DE REGALOS
+   ========================= */
+
+/* =========================
+   CONTENEDOR PROTOCOLO
+   ========================= */
+
+.Protocolo {
+    position: relative;
+
+    width: min(92%, 1200px);
+
+    /*
+     * Espacio suficiente para que las dos
+     * tarjetas puedan superponerse sin
+     * invadir la siguiente sección.
+     */
+    min-height: 690px;
+
+    margin: 80px auto 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   CÓDIGO DE VESTIMENTA
+   ========================= */
+
+.CodigoDeVestimenta {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 55%;
+    min-height: 450px;
+
+    padding: 55px 50px;
+    box-sizing: border-box;
+
+    background: #25263b;
+    color: #fff;
+
+    text-align: center;
+
+    border: 1px solid #b9b0a4;
+    border-radius: 2px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+
+    z-index: 1;
+}
+
+.CodigoDeVestimenta img {
+    display: block;
+
+    width: 80px;
+    height: 60px;
+
+    object-fit: contain;
+
+    margin: 0 auto 20px;
+}
+
+.CodigoDeVestimenta h2 {
+    margin: 10px 0 30px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    font-style: italic;
+
+    color: #fff;
+}
+
+.CodigoDeVestimenta p {
+    margin: 12px auto;
+
+    max-width: 400px;
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    color: #f3f0ed;
+}
+
+
+/* =========================
+   SUGERENCIA DE REGALOS
+   ========================= */
+
+.Regalos {
+    position: absolute;
+
+    /*
+     * Se mantiene la superposición que
+     * tienes actualmente.
+     */
+    top: 290px;
+    right: 0;
+
+    width: 60%;
+    min-height: 400px;
+
+    padding: 55px 45px;
+    box-sizing: border-box;
+
+    background: #f8f5ee;
+    color: #272333;
+
+    text-align: center;
+
+    border: 1px solid #c9c0b4;
+    border-radius: 2px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    z-index: 2;
+}
+
+.Regalos img {
+    display: block;
+
+    width: 70px;
+    height: 55px;
+
+    object-fit: contain;
+
+    margin: 0 auto 20px;
+}
+
+.Regalos h2 {
+    margin: 10px 0 30px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 32px;
+    font-weight: 400;
+    font-style: italic;
+
+    color: #292638;
+}
+
+.Regalos p {
+    margin: 0 auto;
+
+    max-width: 420px;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: #302d35;
+}
+
+
+/* =========================
+   BORDE DECORATIVO
+   ========================= */
+
+.CodigoDeVestimenta::before,
+.CodigoDeVestimenta::after,
+.Regalos::before,
+.Regalos::after {
+    content: "✧";
+
+    position: absolute;
+
+    font-size: 25px;
+}
+
+.CodigoDeVestimenta::before {
+    top: 10px;
+    left: 12px;
+
+    color: #b9b0a4;
+}
+
+.CodigoDeVestimenta::after {
+    top: 10px;
+    right: 12px;
+
+    color: #b9b0a4;
+}
+
+.Regalos::before {
+    top: 10px;
+    left: 12px;
+
+    color: #8d2730;
+}
+
+.Regalos::after {
+    top: 10px;
+    right: 12px;
+
+    color: #8d2730;
+}
+
+
+/* =========================
+   MÓVIL
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .Protocolo {
+        width: 92%;
+        min-height: auto;
+
+        margin: 40px auto;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .CodigoDeVestimenta,
+    .Regalos {
+        position: relative;
+
+        width: 100%;
+        min-height: auto;
+
+        top: auto;
+        left: auto;
+        right: auto;
+    }
+
+
+    .CodigoDeVestimenta {
+        padding: 45px 25px;
+    }
+
+
+    .Regalos {
+        /*
+         * Conserva el efecto de estar
+         * ligeramente encima de la tarjeta
+         * anterior.
+         */
+        margin-top: -30px;
+
+        padding: 45px 25px;
+
+        z-index: 2;
+    }
+
+
+    .CodigoDeVestimenta h2,
+    .Regalos h2 {
+        font-size: 28px;
+    }
+
+
+    .CodigoDeVestimenta p,
+    .Regalos p {
+        font-size: 15px;
+    }
+}
+
+/* =========================
+   BOTÓN VER LISTA
+   ========================= */
+
+#abrirLista {
+    margin-top: 30px;
+
+    padding: 12px 35px;
+
+    background: #292638;
+    color: white;
+
+    border: none;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+#abrirLista:hover {
+    background: #8d2730;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   MODAL
+   ========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    z-index: 1000;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(20, 19, 30, 0.70);
+
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.mostrar {
+    display: flex;
+}
+
+/* =========================
+   CONTENIDO DEL MODAL
+   ========================= */
+
+.modalContenido {
+    position: relative;
+
+    width: 90%;
+    max-width: 500px;
+
+    padding: 50px;
+
+    box-sizing: border-box;
+
+    background: #f8f5ee;
+
+    border: 1px solid #c9c0b4;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+    animation: aparecer 0.3s ease;
+}
+
+.modalContenido h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+
+    text-align: center;
+
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: normal;
+
+    color: #292638;
+}
+
+.modalContenido ul {
+    padding-left: 25px;
+}
+
+.modalContenido li {
+    margin-bottom: 15px;
+
+    color: #302d35;
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* =========================
+   BOTÓN CERRAR
+   ========================= */
+
+.cerrar {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    background: none;
+    border: none;
+
+    font-size: 30px;
+
+    color: #292638;
+
+    cursor: pointer;
+}
+
+.cerrar:hover {
+    color: #8d2730;
+}
+
+/* =========================
+   ANIMACIÓN
+   ========================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+.Ubicacion {
+    background: #f8f5ef;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    color: #202020;
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Ubicacion img{
+    display: block;
+    width: 20%;
+    max-width: 80px;
+    max-height: 10vh;
+    height: auto;
+
+    margin: 30px auto;
+    padding: 0;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    image-rendering: auto;
+
+    box-sizing: border-box; 
+}
+.Ubicacion h2{
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    margin: 0 0 15px;
+    color: #1978e3;
+}
+
+.Ubicacion p{
+    max-width: 700px;
+    text-align: center;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    line-height: 1.65;
+    letter-spacing: .3px;
+    margin-bottom: 10px;
+}
+.Ubicacion a{
+    min-width: 90px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #0919ac;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 50px;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+}
+.Ubicacion {
+    background: #f8f5ef;
+    color: #202020;
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* -------------------------
+   NOMBRES
+------------------------- */
+
+.NombreNovios {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 25px;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255,255,255,.04),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255,255,255,.03),
+            transparent 35%
+        ),
+        #111b2d;
+}
+
+.NombreNovios h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+
+    margin-bottom: 60px;
+
+    color: #e8e4da;
+}
+
+.NombreNovios h1 {
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(3.5rem, 10vw, 6rem);
+
+    font-weight: 400;
+    line-height: 1.1;
+
+    color: #f4f0e8;
+}
+
+.NombreNovios span {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 3rem;
+
+    margin: 15px 0;
+
+    color: #c9b68a;
+}
+
+
+/* -------------------------
+   DISCURSO
+------------------------- */
+
+.Discurso {
+    background: #f8f5ef;
+
+    color: #202020;
+
+    min-height: 55vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 30px;
+}
+
+.Discurso p {
+    max-width: 700px;
+
+    text-align: center;
+
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+
+    line-height: 1.65;
+
+    letter-spacing: .3px;
+}
+
+
+/* -------------------------
+   MÚSICA
+------------------------- */
+
+.Musica {
+    background: #f8f5ef;
+
+    color: #202020;
+
+    text-align: center;
+
+    padding: 30px 30px 70px;
+}
+
+.Musica p {
+    font-family: 'Great Vibes', cursive;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 35px;
+}
+
+.reproductor {
+    max-width: 360px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 2px solid #222;
+
+    padding-top: 20px;
+
+    font-size: 1.8rem;
+}
+
+.reproductor button {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    border: 3px solid #9b1717;
+
+    background: transparent;
+
+    color: #9b1717;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+}
+
+.reproductor span:last-child {
+    color: #222;
+}
+
+.h2 {
+    font-family: "Great Vibes", cursive;
+    font-size: 52px;
+    font-weight: 400;
+    margin: 0 0 35px;
+    color: #f5f2ed; 
+}
+
+.p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 15px 0;
+    color: #f5f2ed; 
+    
+}
+
+.NombreNovios {
+    width: 100%;
+    min-height: 500px;
+    background-color: #25243b; /* azul marino de la imagen */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: #fff;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+.Historia {
+    background: #f8f5ef;
+    color: #202020;
+
+    min-height: 55vh;
+    padding: 70px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+}
+
+.Historia p {
+    width: min(100%, 700px);
+    margin: 0 0 45px;
+
+    text-align: center;
+
+    font-size: clamp(1.15rem, 2.5vw, 1.7rem);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+}
+
+.Historia p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+.calendar-section {
+    width: min(900px, 90%);
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+    color: #222;
+    background-color: #f8f5ef;
+}
+
+
+/* =========================
+   CALENDARIO
+   ========================= */
+
+.calendar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+
+/* Encabezado */
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.calendar-header button {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #222;
+    color: white;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s;
+}
+
+.calendar-header button:hover {
+    background-color: #444;
+}
+
+.calendar-header button:disabled {
+    background-color: #ccc;
+    color: #888;
+    cursor: not-allowed;
+}
+
+
+/* Días de la semana */
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    margin-bottom: 8px;
+
+    text-align: center;
+    font-weight: bold;
+    color: #666;
+}
+
+
+/* Contenedor de los días */
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 6px;
+}
+
+
+/* Cada día */
+
+.calendar-days button {
+    aspect-ratio: 1;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #f2f2f2;
+
+    font-size: 1rem;
+    color: #222;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        color 0.2s,
+        transform 0.2s;
+}
+
+.calendar-days button:hover {
+    background-color: #ddd;
+    transform: scale(1.03);
+}
+
+
+/* =========================
+   ESTADOS DE LOS DÍAS
+   ========================= */
+
+
+/* Días que están fuera del rango */
+
+.calendar-days button.disabled {
+    color: #aaa;
+    background-color: #f7f7f7;
+    cursor: not-allowed;
+}
+
+.calendar-days button.disabled:hover {
+    background-color: #f7f7f7;
+    transform: none;
+}
+
+
+/* Día actual */
+
+.calendar-days button.today {
+    background-color: #2563eb;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* Fecha límite */
+
+.calendar-days button.limit {
+    background-color: #dc2626;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* Día seleccionado */
+
+.calendar-days button.selected {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+}
+
+
+/* =========================
+   CONTADOR
+   ========================= */
+
+.countdown {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.countdown h2 {
+    margin-bottom: 20px;
+}
+
+
+.countdown-values {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.countdown-item {
+    min-width: 90px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background-color: #222;
+    color: white;
+
+    text-align: center;
+}
+
+
+.countdown-item span {
+    display: block;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+.countdown-item small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #bbb;
+    font-size: 0.8rem;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 500px) {
+
+    .calendar-section {
+        width: 95%;
+    }
+
+    .calendar-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .calendar-days {
+        gap: 3px;
+    }
+
+    .calendar-days button {
+        border-radius: 7px;
+        font-size: 0.9rem;
+    }
+
+    .countdown-values {
+        gap: 8px;
+    }
+
+    .countdown-item {
+        min-width: 75px;
+        padding: 10px;
+    }
+
+    .countdown-item span {
+        font-size: 1.5rem;
+    }
+}
