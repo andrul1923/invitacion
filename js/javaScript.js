@@ -313,7 +313,3 @@ generateCalendar();
 updateCountdown();
 
 setInterval(updateCountdown, 1000);
-
-// ==========================================
-// lista de regalo
-// ==========================================
